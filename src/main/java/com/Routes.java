@@ -13,7 +13,8 @@ public class Routes {
 	}
 
 	public String findAction(String requestURI) {
-		return requestURI.split("/")[2];
+		String action = requestURI.split("/")[2];
+		return action;
 	}
 
 }

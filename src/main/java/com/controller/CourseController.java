@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.RequestMethod;
+import com.view.CourseView;
 
 public class CourseController implements Controller {
 	

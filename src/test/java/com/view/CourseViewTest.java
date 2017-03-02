@@ -1,8 +1,10 @@
-package com.controller;
+package com.view;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import com.view.CourseView;
 
 public class CourseViewTest extends CourseView {
 
