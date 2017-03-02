@@ -6,10 +6,14 @@ import com.controller.NotFoundController;
 
 public class Routes {
 
-	public Controller find(String path) {
+	public Controller findController(String path) {
 		if(path.contains("course"))
 			return new CourseController();
 		return new NotFoundController();
+	}
+
+	public String findAction(String requestURI) {
+		return requestURI.split("/")[2];
 	}
 
 }

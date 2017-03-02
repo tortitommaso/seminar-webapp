@@ -12,14 +12,20 @@ public class RoutesTest extends Routes {
 
 	@Test
 	public void return404WhenNotFound() {
-		Controller notFoundController = new Routes().find("path");
+		Controller notFoundController = new Routes().findController("path");
 		assertEquals(notFoundController.getClass(), NotFoundController.class);
 	}
 	
 	@Test
 	public void coursePathCase() throws Exception {		
-		Controller courseController = new Routes().find("course");
+		Controller courseController = new Routes().findController("/course");
 		assertEquals(courseController.getClass(), CourseController.class);
+	}
+	
+	@Test
+	public void findAction() throws Exception {
+		String actual = new Routes().findAction("/course/create");
+		assertEquals("create", actual);
 	}
 
 }
