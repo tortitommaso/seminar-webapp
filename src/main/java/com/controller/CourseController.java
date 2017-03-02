@@ -10,7 +10,8 @@ public class CourseController implements Controller {
 	public void create(HttpServletRequest req, HttpServletResponse resp, RequestMethod requestMethod) throws Exception  {
 		if(requestMethod.equals(RequestMethod.GET)) {
 			resp.setStatus(HttpServletResponse.SC_OK);
-			resp.getWriter().println("<html><body><p>200 form creazione</p></body></html>");					
+			resp.getWriter().println(new CourseView().creationForm());
+			//resp.getWriter().println("<html><body><p>200 form creazione</p></body></html>");					
 		} 
 		if(requestMethod.equals(RequestMethod.POST)) {
 			req.toString();			

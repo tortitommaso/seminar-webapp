@@ -42,5 +42,10 @@
 	      <version>4.8.2</version>
 	      <scope>test</scope>
 	    </dependency>		
+		<dependency>
+		    <groupId>org.freemarker</groupId>
+		    <artifactId>freemarker</artifactId>
+		    <version>2.3.20</version>
+		</dependency>	    
 	</dependencies>
 </project>
