@@ -1,23 +1,30 @@
 package com.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.RequestMethod;
+import com.model.Course;
+import com.repository.CourseRepository;
 import com.view.CourseView;
 
 public class CourseController implements Controller {
 	
 	public void create(HttpServletRequest req, HttpServletResponse resp, RequestMethod requestMethod) throws Exception  {
+		CourseRepository courseRepository = new CourseRepository();
 		if(requestMethod.equals(RequestMethod.GET)) {
+			List<Course> courses = courseRepository.all();
 			resp.setStatus(HttpServletResponse.SC_OK);
-			resp.getWriter().println(new CourseView().creationForm());
-			//resp.getWriter().println("<html><body><p>200 form creazione</p></body></html>");					
+			resp.getWriter().println(new CourseView().creationForm(courses));
 		} 
 		if(requestMethod.equals(RequestMethod.POST)) {
-			req.toString();			
+			String courseName = req.getParameter("courseName");
+			Course course = new Course(courseName);
+			courseRepository.add(course);
 			resp.setStatus(HttpServletResponse.SC_OK);
-			resp.getWriter().println("<html><body><p>action di post creazione</p></body></html>");								
+			resp.sendRedirect("/course/create");								
 		}
 	}
 

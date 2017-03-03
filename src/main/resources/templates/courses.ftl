@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -20,16 +18,21 @@
                   <form role="form" method="POST" action="/course/create">
                      <div class="form-group">
                         <label class="control-label" for="courseName">Name</label>
-                        <input type="text" class="form-control" id="courseName" placeholder="Enter course name">
+                        <input type="text" class="form-control" name="courseName" placeholder="Enter course name">
                      </div>
                      <button type="submit" class="btn btn-default">Create</button>
                   </form>
                </div>
             </div>
-         </div>
+         </div>   
       </div>
-      <!-- /.container -->
-      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <div class="row">
+		 <ul class="list-group">
+	      	<#list courseNames as courseNames>
+			  <li class="list-group-item">${courseNames}</li>
+			</#list>      		      	
+		</ul>         
+      </div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    </body>
 </html>

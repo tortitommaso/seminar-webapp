@@ -1,24 +1,22 @@
 package com.view;
 
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-import freemarker.template.Configuration;
-import freemarker.template.Template;
+import com.model.Course;
 
 public class CourseView {
 	
-	public String creationForm() throws Exception {
-		Configuration cfg = new Configuration();
-		cfg.setClassForTemplateLoading(this.getClass(), "/templates/");
-		Template template = cfg.getTemplate("courses.ftl");
-		Map<String, Object> data = new HashMap<>();
-		data.put("message", "Hello World!");
-		Writer out = new StringWriter();
-		template.process(data, out );
-		return out.toString();
+	public String creationForm(List<Course> courses) throws Exception {
+		TemplateEngine templateEngine = new TemplateEngine();
+		List<String> coursesName = new ArrayList<>();
+		for (Course course : courses) {
+			coursesName.add(course.getName());
+		}
+		Collections.reverse(coursesName);
+		return templateEngine.html("courses.ftl", coursesName);
 	}
+
 	
 }
