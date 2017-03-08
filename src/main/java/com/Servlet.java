@@ -32,7 +32,7 @@ public class Servlet extends HttpServlet {
 			method.invoke(controller, req, resp, requestMethod);
 		} catch (Exception e) {
 			try {
-				new NotFoundController().handle(req, resp);
+				new NotFoundController(e).handle(req, resp);
 			} catch (Exception e1) {
 				throw new RuntimeException(e1);
 			}

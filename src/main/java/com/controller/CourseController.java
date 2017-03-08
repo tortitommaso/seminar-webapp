@@ -21,7 +21,8 @@ public class CourseController implements Controller {
 		} 
 		if(requestMethod.equals(RequestMethod.POST)) {
 			String courseName = req.getParameter("courseName");
-			Course course = new Course(courseName);
+			int totalSeats = Integer.parseInt(req.getParameter("totalSeats"));
+			Course course = new Course(courseName, totalSeats);
 			courseRepository.add(course);
 			resp.setStatus(HttpServletResponse.SC_OK);
 			resp.sendRedirect("/course/create");								

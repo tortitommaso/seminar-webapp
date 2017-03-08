@@ -9,7 +9,7 @@ public class Routes {
 	public Controller findController(String path) {
 		if(path.contains("course"))
 			return new CourseController();
-		return new NotFoundController();
+		return new NotFoundController(new RuntimeException("Route does not exists"));
 	}
 
 	public String findAction(String requestURI) {

@@ -14,7 +14,7 @@ public class CourseViewTest extends CourseView {
 	@Test
 	public void canRenderView() throws Exception {
 		List<Course> courses = new ArrayList<>();
-		courses.add(new Course("d&d"));
+		courses.add(new Course("d&d", 1));
 		String actual = new CourseView().creationForm(courses);
 		assertNotNull(actual);
 		assertTrue(actual.contains("d&d"));
