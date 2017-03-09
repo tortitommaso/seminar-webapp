@@ -10,7 +10,7 @@ import com.model.Course;
 
 public class CourseView {
 	
-	public String creationForm(List<Course> courses) throws Exception {
+	public String creationForm(List<Course> courses, Map<String, String> errors) throws Exception {
 		TemplateEngine templateEngine = new TemplateEngine();
 		List<String> coursesName = new ArrayList<>();
 		for (Course course : courses) {
@@ -19,6 +19,7 @@ public class CourseView {
 		Collections.reverse(coursesName);
 		Map<String, Object> data = new HashMap<>();
 		data.put("courseNames", coursesName);
+		data.put("errors", errors);
 		return templateEngine.html("courses.ftl", data);
 	}
 
