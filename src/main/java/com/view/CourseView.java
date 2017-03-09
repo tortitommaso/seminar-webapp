@@ -2,7 +2,9 @@ package com.view;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.model.Course;
 
@@ -15,7 +17,9 @@ public class CourseView {
 			coursesName.add(course.getName());
 		}
 		Collections.reverse(coursesName);
-		return templateEngine.html("courses.ftl", coursesName);
+		Map<String, Object> data = new HashMap<>();
+		data.put("courseNames", coursesName);
+		return templateEngine.html("courses.ftl", data);
 	}
 
 	
