@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -14,32 +16,34 @@
          <div class="alert alert-danger">
             <strong>Error!</strong>
             <#list errors?keys as key> 
-            ${errors[key]} 
-            <br>
+            	${errors[key]} 
+            	<br>
             </#list> 					  
          </div>
          </#if>
-         <form id="contact" action="/course/create" method="post">
-            <h3>Course Form</h3>
-            <fieldset>
-               <label class="control-label" for="courseName">Course name:</label>   
-               <input placeholder="Course name" type="text" tabindex="1" name="courseName" autofocus>
-            </fieldset>
-            <fieldset>
-               <label class="control-label" for="totalSeats">Total Seats:</label>   
-               <input placeholder="Total Seats" type="number" tabindex="2" name="totalSeats">
-            </fieldset>
-            <fieldset>
-               <button name="submit" type="submit" id="contact-submit">Submit</button>
-            </fieldset>
+         <h2>Courses</h2>
+         <form class="form-horizontal" action="/course/create" method="post">
+            <div class="form-group has-feedback">
+               <label class="col-sm-2 control-label" for="courseName">Name:</label>
+               <div class="col-sm-10">
+                  <input type="text" class="form-control" name="courseName">
+               </div>
+            </div>
+            <div class="form-group has-feedback">
+               <label class="col-sm-2 control-label" for="totalSeats">totalSeats:</label>
+               <div class="col-sm-10">
+                  <input type="number" class="form-control" name="totalSeats">
+               </div>
+            </div>
+            <button type="submit" class="btn btn-default">Create</button>
          </form>
-      </div>
-      <div class="row">
-         <ul class="list-group">
-            <#list courseNames as courseNames>
-            <li class="list-group-item">${courseNames}</li>
-            </#list>      		      	
-         </ul>
+         <div class="row">
+            <ul class="list-group">
+               <#list courseNames as courseNames>
+               <li class="list-group-item">${courseNames}</li>
+               </#list>      		      	
+            </ul>
+         </div>
       </div>
    </body>
 </html>
