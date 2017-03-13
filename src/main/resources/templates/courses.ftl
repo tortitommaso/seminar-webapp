@@ -5,46 +5,42 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Course</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="/css/site.css" />
    </head>
    <body>
       <div class="container">
-      <div class="row">
-         <div class="col-md-12">
-            <div class="panel panel-info">
-               <div class="panel-heading">Course creation form</div>
-               <div class="panel-body">
-               <#if errors?keys?has_content>
-					<div class="alert alert-danger">
-					  <strong>Error!</strong>
-                      <#list errors?keys as key> 
-						${errors[key]} 
-						<br>
-					  </#list> 					  
-					</div>               
-               </#if>
-                  <form role="form" method="POST" action="/course/create">
-                     <div class="form-group">
-                        <label class="control-label" for="courseName">Name</label>
-                        <input type="text" class="form-control" name="courseName" placeholder="Enter course name">
-                        <label class="control-label" for="totalSeats">Total Seats</label>
-                        <input type="number" min="1" max="200" class="form-control" name="totalSeats" placeholder="Enter total seats">
-                     </div>
-                     <button type="submit" class="btn btn-default">Create</button>
-                  </form>
-               </div>
-            </div>
-         </div>   
+         <#if errors?keys?has_content>
+         <div class="alert alert-danger">
+            <strong>Error!</strong>
+            <#list errors?keys as key> 
+            ${errors[key]} 
+            <br>
+            </#list> 					  
+         </div>
+         </#if>
+         <form id="contact" action="/course/create" method="post">
+            <h3>Course Form</h3>
+            <fieldset>
+               <label class="control-label" for="courseName">Course name:</label>   
+               <input placeholder="Course name" type="text" tabindex="1" name="courseName" autofocus>
+            </fieldset>
+            <fieldset>
+               <label class="control-label" for="totalSeats">Total Seats:</label>   
+               <input placeholder="Total Seats" type="number" tabindex="2" name="totalSeats">
+            </fieldset>
+            <fieldset>
+               <button name="submit" type="submit" id="contact-submit">Submit</button>
+            </fieldset>
+         </form>
       </div>
       <div class="row">
-		 <ul class="list-group">
-	      	<#list courseNames as courseNames>
-			  <li class="list-group-item">${courseNames}</li>
-			</#list>      		      	
-		</ul>         
+         <ul class="list-group">
+            <#list courseNames as courseNames>
+            <li class="list-group-item">${courseNames}</li>
+            </#list>      		      	
+         </ul>
       </div>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    </body>
 </html>
 
