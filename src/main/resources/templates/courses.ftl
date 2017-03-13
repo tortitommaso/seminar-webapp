@@ -18,15 +18,16 @@
                <#if errors?keys?has_content>
 					<div class="alert alert-danger">
 					  <strong>Error!</strong>
+                      <#list errors?keys as key> 
+						${errors[key]} 
+						<br>
+					  </#list> 					  
 					</div>               
                </#if>
                   <form role="form" method="POST" action="/course/create">
                      <div class="form-group">
                         <label class="control-label" for="courseName">Name</label>
-                        <input type="text" required class="form-control" name="courseName" placeholder="Enter course name">
-                            <#list errors?keys as key> 
-        						${errors[key]} 
-   							</#list> 
+                        <input type="text" class="form-control" name="courseName" placeholder="Enter course name">
                         <label class="control-label" for="totalSeats">Total Seats</label>
                         <input type="number" min="1" max="200" class="form-control" name="totalSeats" placeholder="Enter total seats">
                      </div>

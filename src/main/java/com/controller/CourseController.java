@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.RequestMethod;
 import com.model.Course;
 import com.repository.CourseRepository;
+import com.validator.CourseValidation;
 import com.view.CourseView;
 
 public class CourseController implements Controller {
@@ -28,12 +29,10 @@ public class CourseController implements Controller {
 	private void createCourse(HttpServletRequest req, HttpServletResponse resp, CourseRepository courseRepository)
 			throws Exception {
 		String courseName = req.getParameter("courseName");
-		int totalSeats = Integer.parseInt(req.getParameter("totalSeats"));
-		Map<String, String> errors = new HashMap<>();
-		errors.put("courseName", courseName);
-		errors.put("courseName-error", "invalid - please provide a correct name");
+		String totalSeats = req.getParameter("totalSeats");
+		Map<String, String> errors =  new CourseValidation().validate(courseName, totalSeats);
 		if (errors.isEmpty()) {
-			Course course = new Course(courseName, totalSeats);		
+			Course course = new Course(courseName, Integer.parseInt(totalSeats));		
 			courseRepository.add(course);
 			resp.setStatus(HttpServletResponse.SC_OK);
 			resp.sendRedirect("/course/create");			
