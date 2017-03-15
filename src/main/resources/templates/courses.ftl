@@ -57,11 +57,14 @@
             <button type="submit" class="btn btn-default">Create</button>
          </form>
          <div class="row">
-            <ul class="list-group">
+			<table class="table table-striped">
+			   <thead><tr><th>#</th><th>Course Name</th> </tr></thead>
+			   <tbody>
                <#list courseNames as courseNames>
-               <li class="list-group-item">${courseNames}</li>
+				<tr><td>${courseNames?index}</td><td>${courseNames}</td></tr>               
                </#list>      		      	
-            </ul>
+			   </tbody>
+			</table>         
          </div>
       </div>
    </body>
