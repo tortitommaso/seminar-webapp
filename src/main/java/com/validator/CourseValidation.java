@@ -5,24 +5,11 @@ import java.util.Map;
 
 public class CourseValidation {
 
-	public Map<String, String> validate(String courseName, String totalSeats) {
+	public Map<String, String> validate(String courseName, String totalSeats, String location) {
 		Map<String, String> errors = new HashMap<>();
-		if (courseName.isEmpty()) {
-			errors.put("courseName-error", "invalid - please provide a not empty string");			
-		}
-		if (totalSeats.isEmpty()) {			
-			errors.put("totalSeats-error", "invalid - please provide a not empty number");			
-		}
-		try {
-			int totalSeatsAsInt = Integer.parseInt(totalSeats);
-			if (totalSeatsAsInt > 200) {				
-				errors.put("totalSeats-error", "invalid - no more than 200 seats are available!");
-			}
-				
-		} catch (NumberFormatException e) {
-			errors.put("totalSeats-error", "invalid - please insert a valid number");
-		}
-
+		new Validation(courseName, errors, "courseName").verifyNotEmpty().verifyMaxLength(15);
+		new Validation(totalSeats, errors, "totalSeats").verifyNotEmpty().verifyIsANumber().verifyMaxLength(3).verifyLesserThan(100);
+		new Validation(location, errors, "location").verifyNotEmpty().verifyMaxLength(20);
 		return errors;
 	}
 

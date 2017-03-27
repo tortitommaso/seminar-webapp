@@ -35,11 +35,30 @@
 	               </div>
 	            </div>
             </#if>         
+	        <#if errors['location-error']?? > 
+				<div class="form-group has-error has-feedback">
+				  <label class="col-sm-2 control-label" for="location">Location:</label>
+				  <div class="col-sm-10">
+					  <input type="text" class="form-control" name="location" aria-describedby="locationStatus">
+					  <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+					  <span id="locationStatus" class="sr-only">(error)</span>
+					  ${errors['location-error']}
+				  </div>
+				</div>        
+         	<#else>
+	            <div class="form-group has-feedback">
+	               <label class="col-sm-2 control-label" for="location">Location:</label>
+	               <div class="col-sm-10">
+	                  <input type="text" class="form-control" name="location">
+	               </div>
+	            </div>
+            </#if>                 
+            
 	        <#if errors['totalSeats-error']?? > 
 	            <div class="form-group has-error has-feedback">
 	               <label class="col-sm-2 control-label" for="totalSeats">totalSeats:</label>
 	               <div class="col-sm-10">
-	                  <input type="number" class="form-control" name="totalSeats" aria-describedby="totalSeatsStatus">
+	                  <input type="text" class="form-control" name="totalSeats" aria-describedby="totalSeatsStatus">
 					  <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
 					  <span id="totalSeatsStatus" class="sr-only">(error)</span>
 					  ${errors['totalSeats-error']}
@@ -49,7 +68,7 @@
 	            <div class="form-group has-feedback">
 	               <label class="col-sm-2 control-label" for="totalSeats">totalSeats:</label>
 	               <div class="col-sm-10">
-	                  <input type="number" class="form-control" name="totalSeats">
+	                  <input type="text" class="form-control" name="totalSeats">
 	               </div>
 	            </div>
             </#if>         
@@ -58,11 +77,11 @@
          </form>
          <div class="row">
 			<table class="table table-striped">
-			   <thead><tr><th>#</th><th>Course Name</th> </tr></thead>
+			   <thead><tr><th>#</th><th>Course Name</th><th>Total Seats</th><th>Location</th> </tr></thead>
 			   <tbody>
-               <#list courseNames as courseNames>
-				<tr><td>${courseNames?index}</td><td>${courseNames}</td></tr>               
-               </#list>      		      	
+               <#list courses as element>
+				<tr><td>${element?index}</td><td>${element.name}</td><td>${element.totalSeats}</td><td>${element.location}</td></tr>               
+               </#list>          	
 			   </tbody>
 			</table>         
          </div>

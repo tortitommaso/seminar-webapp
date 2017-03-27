@@ -30,9 +30,10 @@ public class CourseController implements Controller {
 			throws Exception {
 		String courseName = req.getParameter("courseName");
 		String totalSeats = req.getParameter("totalSeats");
-		Map<String, String> errors =  new CourseValidation().validate(courseName, totalSeats);
+		String location = req.getParameter("location");
+		Map<String, String> errors =  new CourseValidation().validate(courseName, totalSeats, location);
 		if (errors.isEmpty()) {
-			Course course = new Course(courseName, Integer.parseInt(totalSeats));		
+			Course course = new Course(courseName, Integer.parseInt(totalSeats), location);		
 			courseRepository.add(course);
 			resp.setStatus(HttpServletResponse.SC_OK);
 			resp.sendRedirect("/course/create");			
